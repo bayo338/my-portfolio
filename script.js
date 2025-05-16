@@ -46,6 +46,7 @@ var typingEffect = new Typed(".typedText", {
     typeSpeed: 70,
     backSpeed: 60,
     backDelay: 2000,
+    showCursor: false,
 
 });
 

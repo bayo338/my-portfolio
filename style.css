@@ -217,9 +217,9 @@ body.dark #moon{
     color: var(--text-color);    
 }
 
-.featured-text .hello .job-title {
-    font-size: 55px;
-    font-weight: 800;
+.job-title {
+    font-size: 50px;
+    font-weight: 650;
     color: var(--text-color);
 }
 
@@ -249,6 +249,18 @@ body.dark #moon{
     font-weight: 700;
     border-bottom: 1.5px solid #cc2ed1;
 }
+
+.typedText::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+    color: #cc2ed1; /* Set cursor color */
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
 
 .text-btn {
     display: flex;
