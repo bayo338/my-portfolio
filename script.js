@@ -1,32 +1,21 @@
-// function myMenuFunction() {
-//     var menuBth = document.getElementById("myNavMenu");
-
-//     if (menuBth.className === "nav-menu") {
-//         menuBth.className += "responsive";
-//     } else {
-//         menuBth.className = "nav-menu";
-//     }
-// };
-
-// function myMenuFunction() {
-//     var menu = document.getElementById("myNavMenu");
-  
-//     // Toggle 'responsive' class
-//     if (menu.classList.contains("responsive")) {
-//       menu.classList.remove("responsive");
-//     } else {
-//       menu.classList.add("responsive");
-//     }
-//   };
-
-
-
+//Slide-in side bar  
   function myMenuFunction() {
-    var menu = document.getElementById("myNavMenu");
+    const menu = document.getElementById("myNavMenu");
+    const icon = document.getElementById("menuIcon");
+
     menu.classList.toggle("show");
+
+    // Toggle icon
+    // if (menu.classList.contains("show")) {
+    //   icon.classList.replace("uil-bars", "fa-xmark");  // cancel icon
+    // } else {
+    //   icon.classList.replace("fa-xmark", "uil-bars"); // menu icon
+    // }
+
+  // Reset the icon classes
+  icon.className = "fas " + (menu.classList.contains("show") ? "fa-xmark" : "uil-bars");
+
   }
-
-
   
 
 /*----------Dark mode------------*/
@@ -36,6 +25,7 @@ const body = document.querySelector("body"),
 toggleSwitch.addEventListener("click", ()=> {
     body.classList.toggle("dark");
 });
+
 
 /*-------------Typing Effect----------------*/
 
@@ -90,6 +80,7 @@ const srRight = ScrollReveal({
 })
 
 srRight.reveal(".form-control", {delay: 100});
+srRight.reveal(".portfolio-img", {delay: 100});
 
 const srBottom = ScrollReveal({
     origin: "bottom",
@@ -131,22 +122,68 @@ function scrollActive() {
 
 window.addEventListener("scroll", scrollActive);
 
+// About-me tagcloud
+// const myTags = [
+//     'HTML', 'CSS', 'JavaScript', 'React', 'PHP',
+//     'NodeJS', 'MySQL', 'Git', 'Github', 'Flutter'
+//   ];
+
+// const container = '#tagcloud';
+
+//   const options = {
+//     radius: 200,
+//     maxSpeed: 'normal',
+//     initSpeed: 'normal',
+//     direction: 135,
+//     keep: true
+//   };
+
+//   TagCloud(container, myTags, options);
+
 const myTags = [
-    'HTML', 'CSS', 'JavaScript', 'React', 'PHP',
-    'NodeJS', 'MySQL', 'Git', 'Github', 'Flutter'
-  ];
+  'HTML', 'CSS', 'JavaScript', 'React', 'PHP',
+  'NodeJS', 'MySQL', 'Git', 'Github', 'Flutter'
+];
 
 const container = '#tagcloud';
+let tagCloudInstance;
 
+function createTagCloud() {
+  // Destroy existing TagCloud instance if present
+  if (tagCloudInstance?.destroy instanceof Function) {
+    tagCloudInstance.destroy();
+  }
+
+  const screenWidth = window.innerWidth;
+
+  // Define options - you can tweak radius or speed per screen size here if needed
   const options = {
     radius: 200,
-    maxSpeed: 'fast',
+    maxSpeed: 'normal',
     initSpeed: 'normal',
     direction: 135,
     keep: true
   };
 
-  TagCloud(container, myTags, options);
+  tagCloudInstance = TagCloud(container, myTags, options);
+}
+
+// Initialize TagCloud on page load
+createTagCloud();
+
+// Debounce function to limit how often resize triggers
+function debounce(func, delay) {
+  let timer;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(func, delay);
+  };
+}
+
+// Reinitialize TagCloud on window resize with debounce
+window.addEventListener('resize', debounce(createTagCloud, 200));
+
+
 
 
 //   e-mail
