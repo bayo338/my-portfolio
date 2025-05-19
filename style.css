@@ -529,6 +529,13 @@ i {
     color: var(--text-color);
 }
 
+.about-me .p1{
+    text-indent: 2em;
+}
+
+
+
+
 .about-info .about-me-btn {
     text-decoration: none;
     font-size: 15px;
