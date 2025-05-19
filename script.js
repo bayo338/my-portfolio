@@ -95,32 +95,27 @@ srBottom.reveal(".tagcloud-container", {delay: 100});
 
 /*----active link----*/
 
-const sections = document.querySelectorAll(".section[id]");
+const sections = document.querySelectorAll("section[id]");
 
-function scrollActive() {
+  function scrollActive() {
     const scrollY = window.scrollY;
 
-    sections.forEach((current) => {
+    sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 50;
+      const sectionId = current.getAttribute("id");
 
-        const sectionHeight = current.offsetHeight,
+      const navLink = document.querySelector(".nav-menu a[href*=" + sectionId + "]");
 
-            sectionTop = current.offsetTop - 50,
-            sectionId = current.getAttribute("id");
-
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionTop + sectionHeight) {
-                document
-                    .querySelector(".nav-menu a[href*=" + sectionId + "]")
-                    .classList.add("active-link");
-            } else {
-                document
-                    .querySelector(".nav-menu a[href*=" + sectionId + "]")
-                    .classList.remove("active-link");
-            }
-
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLink?.classList.add("active-link");
+      } else {
+        navLink?.classList.remove("active-link");
+      }
     });
-}
+  }
 
-window.addEventListener("scroll", scrollActive);
+  window.addEventListener("scroll", scrollActive);
 
 // About-me tagcloud
 // const myTags = [
@@ -158,7 +153,7 @@ function createTagCloud() {
 
   // Define options - you can tweak radius or speed per screen size here if needed
   const options = {
-    radius: 200,
+    radius: 240,
     maxSpeed: 'normal',
     initSpeed: 'normal',
     direction: 135,

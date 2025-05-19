@@ -61,10 +61,12 @@ html{
     overflow-x: hidden;
 }
 
-.header{
-    /* width: 100%; */
-    /* max-width: var(--max-width); */
+.active-link {
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
+
 
 /* nav-bar */
 
@@ -290,7 +292,6 @@ body.dark #moon{
     margin-block: 20px;
     margin-top: 25px;
     margin-bottom: 30px;
-    height: 3em;
 }
 
 .typedText {
@@ -524,6 +525,7 @@ i {
 
 .about-me p{
     margin-top: 10px;
+    font-size: 15px;
     color: var(--text-color);
 }
 
@@ -567,17 +569,9 @@ i {
     /* margin: auto; */
   }
 
-  /* #tagcloud {
-    width: 100%;
-    height: 100%;
-    font-family: sans-serif;
-    color: #9333ea; 
-    font-weight: bold;
-  } */
-
 #tagcloud {
   width: 100%;
-  height: 300px; /* Set a fixed height for centering */
+  height: 420px; /* Set a fixed height for centering */
   font-family: sans-serif;
   color: #9333ea;
   font-weight: bold;
@@ -897,12 +891,10 @@ footer {
         width: 100vw;        
      }
 
-    /* .featured-image {
-        padding: 0;
-        width: 100%;
-        height: 50%;
+    .featured-name {
+        height: 3em;
     }
-
+/*
     .image,
     .image img {
         width: 100%;
