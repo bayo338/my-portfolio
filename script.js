@@ -136,8 +136,8 @@ const sections = document.querySelectorAll("section[id]");
 //   TagCloud(container, myTags, options);
 
 const myTags = [
-  'HTML', 'CSS', 'JavaScript', 'React', 'PHP',
-  'NodeJS', 'MySQL', 'Git', 'Github', 'Flutter'
+  'ReactJs', 'TypeScript', 'PHP',
+'Node.js', 'Next.js', 'MySQL', 'PostgreSQL', 'Flutter'
 ];
 
 const container = '#tagcloud';
